@@ -40,6 +40,15 @@ app.get('/about/', (req, res) => {
     res.sendFile(__dirname + '/public/about.html');
 });
 
+app.get('/form/', (req, res) => {
+    res.sendFile(__dirname + '/public/form.html');
+});
+
+app.get('/db/', (req, res) => {
+    res.send();
+    res.end();
+});
+
 // make public static files avaiable
 app.use(express.static('public'));
 
