@@ -1,0 +1,35 @@
+* {
+	box-sizing: broder-box;
+}
+
+html {
+	height: 100vh;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	border-bottom-color: blue;
+	border-bottom-width: 5px;
+	border-style: dotted solid;
+}
+
+header {
+	height: 10%;
+}
+
+footer {
+	height: 10%;
+	position: absolute;
+	bottom: 10px;
+	background-color: red;
+}
+
+p {
+	text-align: center;
+	position: relative;
+}
+
+#content {
+	position: absolute;
+}
