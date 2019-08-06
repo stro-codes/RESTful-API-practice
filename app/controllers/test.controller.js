@@ -114,3 +114,17 @@ exports.delete = (req, res) => {
         });
     });
 };
+
+exports.form = (req, res) => {
+    var d = new Test({
+        name: req.body.name || "untitled",
+        address: req.body.address
+    });
+    d.save()
+        .then( test => {
+            res.send("saved form to db");
+        })
+        .catch( err => {
+            res.status(400).send("unable to to save form to db");
+        });
+}

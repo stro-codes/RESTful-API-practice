@@ -13,6 +13,9 @@ module.exports = (app) => {
     // Update a Note with noteId
     app.put('/tests/:testId', tests.update);
 
+    // add new form
+    app.post('/form/db', tests.form);
+
     // Delete a Note with noteId
     app.delete('/tests/:testId', tests.delete);
 }

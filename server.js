@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const tests = require('./app/controllers/test.controller.js');
 
 // create express app
 const app = express();
@@ -44,10 +45,7 @@ app.get('/form/', (req, res) => {
     res.sendFile(__dirname + '/public/form.html');
 });
 
-app.get('/db/', (req, res) => {
-    res.send();
-    res.end();
-});
+app.get('/form/db/', tests.form);
 
 // make public static files avaiable
 app.use(express.static('public'));
