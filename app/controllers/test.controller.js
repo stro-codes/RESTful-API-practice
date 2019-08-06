@@ -47,7 +47,7 @@ exports.findOne = (req, res) => {
                 message: "Note not found with id " + req.params.testId
             });            
         }
-        res.send(note);
+        res.send(test);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
@@ -120,9 +120,15 @@ exports.form = (req, res) => {
         name: req.body.name || "untitled",
         address: req.body.address
     });
+    console.log(req.body.password);
+    if(req.body.password !== "123")
+        res.status(400).send("invalid credentials");
     d.save()
         .then( test => {
-            res.send("saved form to db");
+            Test.find()
+                .then(tests => { 
+                    res.send("saved form to db <br>" + tests);
+                })
         })
         .catch( err => {
             res.status(400).send("unable to to save form to db");
