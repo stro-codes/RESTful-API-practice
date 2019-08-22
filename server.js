@@ -7,10 +7,10 @@ const tests = require('./app/controllers/test.controller.js');
 const app = express();
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse requests of content-type - application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
@@ -35,6 +35,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname+ '/public/index.html');
 });
 
+// more routes
 app.get('/about/', (req, res) => {
     //res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
     //res.end("hi");
@@ -47,11 +48,16 @@ app.get('/form/', (req, res) => {
 
 app.get('/form/db/', tests.form);
 
+app.get('/vue/', (req, res) => {
+    res.sendFile(__dirname + '/practice.vue');
+});
+
 // make public static files avaiable
 app.use(express.static('public'));
 
 // require tests routes
 require('./app/routes/test.routes.js')(app);
+require('./app/routes/player.routes.js')(app);
 
 const PORT = process.env.PORT || 5000;
 
